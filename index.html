@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1c2a4d">
+  <title>Salwa Music | Pendapatan & Piutang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Limelight&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260929-fonts-block">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Salwa Music, dashboard">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span><strong>Salwa Music</strong><small>Administrasi kursus</small></span>
+      </a>
+      <p class="nav-label">MENU UTAMA</p>
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <button class="nav-item active" data-page="dashboard"><span aria-hidden="true">⌂</span>Dashboard</button>
+        <button class="nav-item" data-page="siswa"><span aria-hidden="true">♙</span>Data siswa</button>
+        <button class="nav-item" data-page="program"><span aria-hidden="true">♫</span>Program kursus</button>
+        <button class="nav-item" data-page="tagihan"><span aria-hidden="true">▤</span>Tagihan</button>
+        <button class="nav-item" data-page="pembayaran"><span aria-hidden="true">↗</span>Pembayaran</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="music-note" aria-hidden="true">♫</span>
+        <p>Ritme administrasi yang rapi, agar fokus tetap pada musik.</p>
+        <small>SALWA MUSIC · 2026</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">SALWA MUSIC <span>/</span> KEUANGAN</p><h1 id="pageTitle">Dashboard</h1></div>
+        <div class="top-actions"><span class="date-pill" id="todayText"></span><span class="avatar" aria-label="Salwa Music">SM</span></div>
+      </header>
+
+      <section id="dashboard" class="page active-page">
+        <div class="welcome-band">
+          <div><span class="soft-label">CATATAN KEUANGAN KURSUS</span><h2>Jaga aliran tetap<br><em>harmonis.</em></h2><p>Pendapatan dan tagihan siswa Salwa Music, tercatat dalam satu ruang.</p></div>
+          <div class="soundwave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="welcome-note" aria-hidden="true">♪</span>
+          <span class="welcome-note-small" aria-hidden="true">♪</span>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-icon income-icon" aria-hidden="true">↗</span><div><p>Pendapatan bulan ini</p><h2 id="statIncome">Rp0</h2><small id="incomeCount">0 pembayaran</small></div></article>
+          <article class="stat-card"><span class="stat-icon receivable-icon" aria-hidden="true">◷</span><div><p>Total piutang</p><h2 id="statReceivable">Rp0</h2><small id="receivableCount">0 tagihan belum lunas</small></div></article>
+          <article class="stat-card"><span class="stat-icon student-icon" aria-hidden="true">♙</span><div><p>Siswa aktif</p><h2 id="statStudents">0</h2><small>terdaftar</small></div></article>
+          <article class="stat-card"><span class="stat-icon program-icon" aria-hidden="true">♫</span><div><p>Program kursus</p><h2 id="statPrograms">0</h2><small>tersedia</small></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="content-panel">
+            <div class="panel-heading"><div><p class="eyebrow">PERLU DITINDAKLANJUTI</p><h2>Tagihan berjalan</h2></div><button class="text-button" data-go="tagihan">Semua tagihan <span aria-hidden="true">→</span></button></div>
+            <div class="table-wrap"><table><thead><tr><th>Siswa</th><th>Jatuh tempo</th><th>Sisa tagihan</th><th>Status</th></tr></thead><tbody id="duePreview"></tbody></table></div>
+          </section>
+          <section class="content-panel recent-panel">
+            <div class="panel-heading"><div><p class="eyebrow">PEMBAYARAN TERBARU</p><h2>Aktivitas</h2></div><button class="text-button" data-go="pembayaran">Semua pembayaran <span aria-hidden="true">→</span></button></div>
+            <div id="paymentPreview" class="activity-list"></div>
+          </section>
+        </div>
+        <div class="quick-actions"><div><strong>Catat aktivitas baru</strong><span>Pilih tindakan untuk memperbarui administrasi.</span></div><button class="secondary-btn" id="quickInvoice">＋ Buat tagihan</button><button class="primary-btn" id="quickPayment">＋ Catat pembayaran</button></div>
+      </section>
+
+      <section id="siswa" class="page">
+        <div class="section-toolbar"><div><p class="eyebrow">DATA MASTER</p><h2>Data siswa</h2><p class="muted">Informasi siswa yang mengikuti kursus di Salwa Music.</p></div><button class="primary-btn" id="addSiswaBtn">＋ Tambah siswa</button></div>
+        <section class="content-panel"><div class="table-tools"><label class="search-box"><span aria-hidden="true">⌕</span><input id="searchSiswa" placeholder="Cari nama atau telepon" aria-label="Cari siswa"></label></div><div class="table-wrap"><table><thead><tr><th>Nama siswa</th><th>No. telepon</th><th>Email</th><th>Tanggal daftar</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="siswaTable"></tbody></table></div></section>
+      </section>
+
+      <section id="program" class="page">
+        <div class="section-toolbar"><div><p class="eyebrow">DATA MASTER</p><h2>Program kursus</h2><p class="muted">Kelola instrumen, durasi, dan biaya kursus.</p></div><button class="primary-btn" id="addProgramBtn">＋ Tambah program</button></div>
+        <section class="content-panel"><div class="table-wrap"><table><thead><tr><th>Nama program</th><th>Instrumen</th><th>Durasi</th><th>Biaya bulanan</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="programTable"></tbody></table></div></section>
+      </section>
+
+      <section id="tagihan" class="page">
+        <div class="section-toolbar"><div><p class="eyebrow">PENDAPATAN & PIUTANG</p><h2>Tagihan</h2><p class="muted">Tagihan kursus dan sisa pembayaran setiap siswa.</p></div><button class="primary-btn" id="addTagihanBtn">＋ Buat tagihan</button></div>
+        <section class="content-panel"><div class="table-tools"><label class="search-box"><span aria-hidden="true">⌕</span><input id="searchTagihan" placeholder="Cari siswa atau program" aria-label="Cari tagihan"></label><select id="filterTagihan" class="filter-select" aria-label="Filter status tagihan"><option value="semua">Semua status</option><option value="Belum dibayar">Belum dibayar</option><option value="Sebagian">Sebagian</option><option value="Lunas">Lunas</option></select></div><div class="table-wrap"><table><thead><tr><th>No. tagihan</th><th>Siswa</th><th>Periode</th><th>Jatuh tempo</th><th>Nilai</th><th>Sisa</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="tagihanTable"></tbody></table></div></section>
+      </section>
+
+      <section id="pembayaran" class="page">
+        <div class="section-toolbar"><div><p class="eyebrow">PENERIMAAN KAS</p><h2>Pembayaran</h2><p class="muted">Riwayat pembayaran yang telah diterima.</p></div><button class="primary-btn" id="addPembayaranBtn">＋ Catat pembayaran</button></div>
+        <section class="content-panel"><div class="table-tools"><label class="search-box"><span aria-hidden="true">⌕</span><input id="searchPembayaran" placeholder="Cari siswa atau referensi" aria-label="Cari pembayaran"></label></div><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Siswa</th><th>No. tagihan</th><th>Metode</th><th>Referensi</th><th>Jumlah</th><th>Aksi</th></tr></thead><tbody id="pembayaranTable"></tbody></table></div></section>
+      </section>
+    </main>
+  </div>
+  <div id="modalOverlay" class="modal-overlay hidden"><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Tutup">×</button><div id="modalContent"></div></section></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../backend/config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
